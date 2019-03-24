@@ -80,6 +80,45 @@ background-color: #eeeeee;
 	width: 100%;
 	letter-spacing:16px;
 }
+.login-other{
+	width: 100%;
+}
+.login-other span{
+	float:left;
+	line-height: 35px;
+	color: #999;
+}
+.login-other i{
+	font-size: 26px;
+}
+.login-other a{
+	float: right;
+}
+.login-other-icon{
+	float:left;
+}
+.login-other-icon i{
+	margin-left: 10px;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #d2d2d2;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #d2d2d2;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #d2d2d2;
+}
+.bottom-content{
+    width: 100%;
+    text-align: center;
+}
+.bottom-content p{
+	padding: 0 10px;
+}
 
 </style>
 
@@ -138,11 +177,29 @@ background-color: #eeeeee;
 				<button class="layui-btn">登录</button>
  			</div>
  			
- 			
- 			
- 			
+ 			<div class="layui-form-item" style="top: 20px;">
+ 				<div class="login-other">
+					<span>社交账号登录</span>
+					<div class="login-other-icon">
+						<a href="javascript:0;"><i class="layui-icon layui-icon-login-weibo" style="color:#CF1900;"></i></a>
+						<a href="javascript:0;"><i class="layui-icon layui-icon-login-wechat" style="color:#4DAF29;"></i></a>   
+						<a href="javascript:0;"><i class="layui-icon layui-icon-login-qq" style="color:#3492ED;"></i></a>   
+					</div>
+					<a href="javascript:0;">账号注册</a>
+				</div>
+ 			</div>
  		</div>
  	</div>
+ 	
+ 	<div class="bottom-content">
+ 		<p>© 2018 <a href="http://www.layui.com/" target="_blank">layui.com</a></p>
+ 		<p>
+      <span><a href="http://www.layui.com/admin/#get" target="_blank">获取授权</a></span>
+      <span><a href="http://www.layui.com/admin/pro/" target="_blank">在线演示</a></span>
+      <span><a href="http://www.layui.com/admin/" target="_blank">前往官网</a></span>
+    </p>
+ 	</div>
+ 	
  </div>
  
 <script src="layui/layui.js"></script>
