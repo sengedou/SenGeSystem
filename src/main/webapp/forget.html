@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>找回密码!</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/private/login.css">
+</head>
+<body>
+ <div class="layui-container">
+ 	<div class="content">
+ 		<div class="content-head">
+ 			<h2>找回密码</h2>
+ 			<p>官方出品的后台管理系统</p>
+ 		</div>
+ 		<div class="content-body layui-form">
+ 			<div class="layui-form-item">
+	 			<label class="layui-icon layui-icon-cellphone"></label>
+			    <div class="input-block">
+					<input type="text" name="cellphone" required  lay-verify="required" placeholder="请输入注册时的手机号" autocomplete="off" class="layui-input">
+				</div>
+ 			</div>
+ 			<div class="layui-form-item">
+ 				<div class="layui-row">
+ 					<div class="layui-col-xs7">
+	 					<label class="layui-icon layui-icon-vercode"></label>
+					    <div class="input-block">
+					    	<input type="text" name="vercode" required  lay-verify="required" placeholder="图形验证码" autocomplete="off" class="layui-input">
+					    </div>
+ 					</div>
+	 				<div class="layui-col-xs5">
+	 					<div class="layui-form-item-vercode">
+	 						<img alt="" src="https://www.oschina.net/action/user/captcha?t=1552630921199">
+	 					</div>
+	 				</div>
+ 				</div>
+ 			</div>
+ 			<div class="layui-form-item">
+ 				<div class="layui-row">
+ 					<div class="layui-col-xs7">
+	 					<label class="layui-icon layui-icon-vercode"></label>
+					    <div class="input-block">
+					    	<input type="text" name="vercode" required  lay-verify="required" placeholder="短信验证码" autocomplete="off" class="layui-input">
+					    </div>
+ 					</div>
+	 				<div class="layui-col-xs5">
+	 					<div class="layui-form-item-vercode">
+	 						<button type="button" class="layui-btn layui-btn-primary layui-btn-fluid">获取验证码</button>
+	 					</div>
+	 				</div>
+ 				</div>
+ 			</div>
+ 			<div class="layui-form-item">
+				<button class="layui-btn main-button" lay-submit style="letter-spacing: 0px;">找回密码</button>
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class="bottom-content">
+ 		<div class="bottom-content-copyright">
+ 			<p>Copyright © 2019 <a href="javascript:0;" target="_blank">SenGeDou.com</a></p>
+ 		</div>
+ 		<div class="bottom-content-help">
+ 			<p>
+	      		<span><a href="javascript:0;" target="_blank">关于我们</a></span>
+	      		<span><a href="javascript:0;" target="_blank">联系我们</a></span>
+	      		<span><a href="javascript:0;" target="_blank">点击帮助</a></span>
+    		</p>
+ 		</div>
+ 	</div>
+ </div>
+<script src="layui/layui.js"></script>
+<script>
+layui.use('form', function(){
+	  var form = layui.form;
+	});  
+</script>
+</body>
+</html>
