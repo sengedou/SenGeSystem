@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <!--区分sql块，不同文件中的sql语句id可能重复，一般写文件全路径  -->
+ <mapper namespace="mapper1">
+ 	<select id="findById" parameterType="int" resultType="UserBean">
+ 		select * from user1 where id=#{id}; 
+ 	</select>
+ 	 	<select id="findAll" parameterType="int" resultType="UserBean">
+ 		select * from user1; 
+ 	</select>
+ 	
+ 	<!-- #:默认采用预编译,$:sql拼接 -->
+ 	<insert id="add" parameterType="UserBean">
+ 		insert into user1(name,pwd) values(#{name},#{pwd});
+ 	</insert>
+ 	<delete id="del" parameterType="int">
+ 		delete from user1 where id=#{id};
+ 	</delete>
+ 	<update id="update" parameterType="UserBean">
+ 		update user1 set pwd=#{pwd} where id =#{id}
+ 	</update>
+ </mapper>
