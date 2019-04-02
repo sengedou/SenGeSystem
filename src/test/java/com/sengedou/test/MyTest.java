@@ -12,15 +12,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sengedou.bean.ClassBean;
+import com.sengedou.bean.StudentBean;
 import com.sengedou.bean.UserBean;
 import com.sengedou.util.MybatisUtil;
 
 public class MyTest {
 
-	@Before
-	public void before() {
-		System.out.println("代码执行之前的准备");
-	}
+//	@Before
+//	public void before() {
+//		System.out.println("代码执行之前的准备");
+//	}
 
 	@Test
 	public void findUserById() {
@@ -38,7 +40,6 @@ public class MyTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test
@@ -68,6 +69,14 @@ public class MyTest {
 	public void find1() {
 		SqlSession session = MybatisUtil.getSqlSession();
 		UserBean bean = session.selectOne("mapper1.findById", 1);
+		System.out.println(bean);
+		session.close();
+	}
+	
+	@Test
+	public void find2() {
+		SqlSession session = MybatisUtil.getSqlSession();
+		UserBean bean = session.selectOne("mapper1.findById2", 1);
 		System.out.println(bean);
 		session.close();
 	}
@@ -102,7 +111,7 @@ public class MyTest {
 	public void del1() {
 		SqlSession session = MybatisUtil.getSqlSession(true);
 		try {
-			session.delete("mapper1.del", 3);
+			session.delete("mapper1.del", 6);
 		} catch (Exception e) {
 			session.rollback();
 			// TODO: handle exception
@@ -110,8 +119,6 @@ public class MyTest {
 		} finally {
 			session.close();
 		}
-		
-		
 	}
 
 	@Test
@@ -123,7 +130,44 @@ public class MyTest {
 		session.update("mapper1.update", bean);
 		session.close();
 	}
-
+	
+	@Test
+	public void findAll2() {
+		SqlSession session = MybatisUtil.getSqlSession();
+		List<UserBean> list = session.selectList("mapper1.findAll");
+		for (UserBean userBean : list) {
+			System.out.println(userBean);
+		}
+		session.close();
+	}
+	
+	@Test
+	public void findAll3() {
+		SqlSession session = MybatisUtil.getSqlSession();
+		List<UserBean> list = session.selectList("mapper1.findAll");
+		for (UserBean userBean : list) {
+			System.out.println(userBean);
+		}
+		session.close();
+	}
+	
+	@Test
+	public void findStudentById() {
+		SqlSession session=MybatisUtil.getSqlSession();
+		StudentBean stu=session.selectOne("com.sengedou.bean.StudentBean.findById",1);
+		System.out.println(stu);
+		session.close();
+		
+	}
+	
+	@Test
+	public void findClassById() {
+		SqlSession session=MybatisUtil.getSqlSession();
+		ClassBean cl=session.selectOne("com.sengedou.bean.ClassBean.findById",1);
+		System.out.println(cl);
+		session.close();
+	}
+	
 //	@After
 //	public void after() {
 //		System.out.println("方法执行完之后的收尾");

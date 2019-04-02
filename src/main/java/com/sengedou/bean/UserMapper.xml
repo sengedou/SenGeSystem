@@ -3,12 +3,26 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <!--区分sql块，不同文件中的sql语句id可能重复，一般写文件全路径  -->
+ <!--区分sql块，不同文件中的sql语句id可能重复，namespace一般写文件全路径,mapper标签只能一个  -->
  <mapper namespace="mapper1">
+ 	
  	<select id="findById" parameterType="int" resultType="UserBean">
  		select * from user1 where id=#{id}; 
  	</select>
- 	 	<select id="findAll" parameterType="int" resultType="UserBean">
+ 	
+ 	 <select id="findById2" parameterType="int" resultMap="map">
+ 		select * from user2 where u_id=#{id}; 
+ 	</select>
+ 	
+ 	<!--专门处理数据转化 -->
+ 	<resultMap type="UserBean" id="map">
+ 		<!--只有ID使用此标签 -->
+ 		<id property="id" column="u_id"></id>
+ 		<result property="name" column="u_name"></result>
+ 		<result property="pwd" column="u_pass"></result>
+ 	</resultMap>
+ 	
+ 	<select id="findAll" parameterType="int" resultType="UserBean">
  		select * from user1; 
  	</select>
  	
@@ -16,9 +30,11 @@
  	<insert id="add" parameterType="UserBean">
  		insert into user1(name,pwd) values(#{name},#{pwd});
  	</insert>
+ 	
  	<delete id="del" parameterType="int">
  		delete from user1 where id=#{id};
  	</delete>
+ 	
  	<update id="update" parameterType="UserBean">
  		update user1 set pwd=#{pwd} where id =#{id}
  	</update>

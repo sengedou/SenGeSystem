@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <!--区分sql块，不同文件中的sql语句id可能重复，namespace一般写文件全路径,mapper标签只能一个  -->
+ <mapper namespace="com.sengedou.bean.StudentBean">
+ 	
+ 	<select id="findById" parameterType="int" resultMap="map">
+ 		select * from student  inner join class  on s_c_id=c_id where s_id=#{id};  
+ 	</select>
+ 	
+ 	<!--专门处理数据转化 -->
+ 	<resultMap type="StudentBean" id="map">
+ 		<!--只有ID使用此标签 -->
+ 		<id property="studentId" column="s_id"></id>
+ 		<result property="studentName" column="s_name"></result>
+ 		<association property="cl" javaType="ClassBean">
+ 			<id property="classId" column="c_id"></id>
+ 			<result property="className" column="c_name"></result>
+ 		</association>
+ 	</resultMap>
+
+ </mapper>
