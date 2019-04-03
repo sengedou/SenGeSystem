@@ -5,10 +5,15 @@
 <configuration>
 	<!--引入外部的properties文件  -->
 	<properties resource="db.properties"></properties>
-	<!--引入日志功能  -->
 	<settings>
+	<!--引入日志功能  -->
 		<setting name="logImpl" value="LOG4J"/>
+		<!--启动懒加载  -->
+		<setting name="lazyLoadingEnabled" value="true"></setting>
+		<!--积极加载变为消极加载  -->
+		<setting name="aggressiveLazyLoading" value="false"></setting>
 	</settings>
+	
 	<!--设置类型别名  -->
 	<typeAliases>
 		<!-- <typeAlias type="com.sengedou.bean.UserBean" alias="user"/> -->
