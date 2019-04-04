@@ -5,6 +5,7 @@ public class UserBean {
 	private int id;
 	private String name;
 	private String pwd;
+	private int age;
 	
 	public int getId() {
 		return id;
@@ -23,6 +24,12 @@ public class UserBean {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	@Override
 	public String toString() {

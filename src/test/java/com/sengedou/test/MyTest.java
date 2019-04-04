@@ -2,6 +2,7 @@ package com.sengedou.test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -165,6 +166,65 @@ public class MyTest {
 		SqlSession session=MybatisUtil.getSqlSession();
 		ClassBean cl=session.selectOne("com.sengedou.bean.ClassBean.findById",1);
 		System.out.println(cl);
+		session.close();
+	}
+	
+	@Test
+	public void finduser() {
+		SqlSession session=MybatisUtil.getSqlSession();
+		UserBean bean=new UserBean();
+		//bean.setId(1);
+		//bean.setName("sengedou");
+		UserBean us=session.selectOne("mapper1.find1",bean);
+		System.out.println(us);
+	}
+	
+	@Test
+	public void update2() {
+		SqlSession session =MybatisUtil.getSqlSession();
+		UserBean bean=new UserBean();
+		bean.setId(1);
+		bean.setName("杜甫");
+		bean.setAge(10);
+		session.update("update1", bean);
+		session.commit();
+		session.close();
+	}
+	
+	@Test
+	public void insert1() {
+		SqlSession session = MybatisUtil.getSqlSession();
+		List<UserBean> list = new ArrayList<UserBean>();
+		
+		UserBean user1 = new UserBean();
+		user1.setName("亚索");
+		user1.setPwd("hashage");
+		user1.setAge(35);
+		
+		UserBean user2 = new UserBean();
+		user2.setName("盖伦");
+		user2.setPwd("5555");
+		user2.setAge(30);
+		
+		UserBean user3 = new UserBean();
+		user3.setName("赵信");
+		user3.setPwd("666");
+		user3.setAge(20);
+		list.add(user1);
+		list.add(user2);
+		list.add(user3);
+		
+		session.insert("mapper1.insert1", list);
+		session.commit();
+		session.close();
+	}
+	
+	@Test
+	public void delete1() {
+		SqlSession session=MybatisUtil.getSqlSession();
+		int[] array= {11,12,13};
+		session.delete("mapper1.delete1", array);
+		session.commit();
 		session.close();
 	}
 	

@@ -38,4 +38,52 @@
  	<update id="update" parameterType="UserBean">
  		update user1 set pwd=#{pwd} where id =#{id}
  	</update>
+ 	
+ 	
+ 	<select id="find1" parameterType="UserBean" resultType="UserBean">
+ 		select * from user1
+ 		<where>
+ 			<choose>
+ 			<when test="id!=0">
+ 			id=#{id}
+ 			</when>
+ 			<when test="name!=null">
+ 			and name=#{name}
+ 			</when>
+ 			<otherwise>
+ 			and name='li';
+ 			</otherwise>
+ 			</choose>
+ 		</where>
+ 	</select>
+ 	
+ 	<update id="update1" parameterType="UserBean">
+ 		update user1 
+ 		<set>
+ 			<if test="name!=null">
+ 				name=#{name},
+ 			</if>
+ 			<if test="age!=0">
+ 				age=#{age},
+ 			</if>
+ 			id=#{id}
+ 		</set>
+ 		where id=#{id};
+ 	</update>
+ 	
+ 	<insert id="insert1" parameterType="java.util.List">
+ 	insert into user1(name,pwd,age) values
+ 	<foreach item="user" index="index" collection="list" separator=",">
+ 		(#{user.name},#{user.pwd},#{user.age})
+ 	</foreach>
+ 	</insert>
+ 	
+ 	<delete id="delete1" parameterType="java.util.List">
+ 	delete from user1 where id in 
+ 	<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+ 		#{item}
+ 	</foreach>
+ 	</delete>
+ 	
+ 	
  </mapper>
