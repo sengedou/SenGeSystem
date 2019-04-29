@@ -42,4 +42,5 @@
     <mapper resource="com/sengedou/bean/StudentMapper.xml"/>
     <mapper resource="com/sengedou/bean/ClassMapper.xml"/>
   </mappers>
+
 </configuration>

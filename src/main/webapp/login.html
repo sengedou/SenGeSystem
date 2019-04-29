@@ -37,7 +37,7 @@
  					</div>
 	 				<div class="layui-col-xs5">
 	 					<div class="layui-form-item-vercode">
-	 						<img alt="" src="https://www.oschina.net/action/user/captcha?t=1552630921199">
+	 						<img alt="" src="VlidateCode.do">
 	 					</div>
 	 				</div>
  				</div>
@@ -49,7 +49,7 @@
 				<a href="forget.html">忘记密码？</a>
  			</div>
  			<div class="layui-form-item">
-				<button class="layui-btn main-button" lay-submit>登录</button>
+				<button lay-filter="login" class="layui-btn main-button" lay-submit>登录</button>
  			</div>
  			<div class="layui-form-item" style="top: 20px;">
  				<div class="login-other">
@@ -81,6 +81,12 @@
 <script>
 layui.use('form', function(){
 	  var form = layui.form;
+	
+	  form.on('submit(login)', function(data){
+		  alert(data);
+		});
+	
+	
 	});  
 </script>
 </body>

@@ -1,11 +1,11 @@
 package com.sengedou.bean;
 
+
 public class UserBean {
 	
 	private int id;
-	private String name;
-	private String pwd;
-	private int age;
+	private String username;
+	private String password;
 	
 	public int getId() {
 		return id;
@@ -13,28 +13,20 @@ public class UserBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	@Override
 	public String toString() {
-		return "UserBean [id=" + id + ", name=" + name + ", pwd=" + pwd + "]";
+		return "UserBean [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
-	
-	
 }

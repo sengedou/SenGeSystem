@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <!--区分sql块，不同文件中的sql语句id可能重复，namespace一般写文件全路径,mapper标签只能一个  -->
- <mapper namespace="mapper1">
+ <mapper namespace="com.sengedou.dao.IuserDao">
  	
  	<select id="findById" parameterType="int" resultType="UserBean">
  		select * from user1 where id=#{id}; 
@@ -23,7 +23,7 @@
  	</resultMap>
  	
  	<select id="findAll" parameterType="int" resultType="UserBean">
- 		select * from user1; 
+ 		select * from user; 
  	</select>
  	
  	<!-- #:默认采用预编译,$:sql拼接 -->
