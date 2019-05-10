@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,10 +87,11 @@
 layui.use('form', function(){
 	  var form = layui.form;
 	  form.on('submit(login)', function(data){
-	  	
+	  	console.log(data);
+	  	var a = "${message}";
+	  	alert(a);
 	  })
 	});  
-	
 </script>
 </body>
 </html>

@@ -8,5 +8,5 @@ public interface IUserDao {
 	
 	 List<UserBean> findAll();
 
-	 UserBean findByName(String name);
+	 UserBean findByNameAndPass(UserBean bean);
 }

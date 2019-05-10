@@ -24,18 +24,18 @@ public class UserDaoImpl implements IUserDao{
 	}
 
 	@Override
-	public UserBean findByName(String name) {
+	public UserBean findByNameAndPass(UserBean bean) {
 		SqlSession session = fa.openSession();
-		UserBean bean = null;
+		UserBean resultBean = null;
 		try {
 			IUserDao dao = session.getMapper(IUserDao.class);
-			bean = dao.findByName(name);
+			resultBean = dao.findByNameAndPass(bean);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return bean;
+		return resultBean;
 	}
 
 	

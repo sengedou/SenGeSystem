@@ -10,26 +10,38 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.sengedou.service.ILoginService;
+import com.sengedou.bean.UserBean;
+import com.sengedou.service.IUserService;
 import com.sengedou.util.SpringContextUtils;
 import com.sengedou.util.ValidateCode;
 
 @Controller
-public class LoginHandler {
+public class UserHandler {
 	
 	@Autowired
-	private ILoginService service;
-	@Autowired
-	private SpringContextUtils  springContextUtils;
+	private IUserService service;
 	
 	@RequestMapping("/login.do")
-	public String login(HttpSession session){
-		System.out.println("登录成功");
-		System.out.println(springContextUtils.getBean(ValidateCode.class).getCode());
-		
-		service.login("xiaowang", "bbb", "ccc");
-		return "/index.html";
+	public ModelAndView login(HttpSession session, UserBean bean, String vercode) {
+		ModelAndView mav = new ModelAndView();
+		String realCode = (String) session.getAttribute("code");
+		if (!realCode.equalsIgnoreCase(vercode)) {
+			mav.setViewName("/login.html");
+			mav.addObject("message", "验证码不正确，请重新输入");
+			return mav;
+		}
+		UserBean realBean = service.login(bean);
+		if (realBean == null) {
+			mav.setViewName("/login.html");
+			mav.addObject("message", "用户名或密码不正确，请重新输入");
+		} else {
+			mav.setViewName("/index.html");
+			mav.addObject("message", "登录成功");
+		}
+		return mav;
+
 	}
 	
 	@RequestMapping("/VlidateCode.do")

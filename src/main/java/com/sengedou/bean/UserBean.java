@@ -6,7 +6,7 @@ public class UserBean {
 	private int id;
 	private String username;
 	private String password;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -27,6 +27,7 @@ public class UserBean {
 	}
 	@Override
 	public String toString() {
-		return "UserBean [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "UserBean [id=" + id + ", username=" + username + ", password=" + password +  "]";
 	}
+	
 }

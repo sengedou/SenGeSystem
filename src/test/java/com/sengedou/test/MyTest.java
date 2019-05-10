@@ -21,8 +21,8 @@ public class MyTest {
 	public void find() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		IUserDao dao = context.getBean(UserDaoImpl.class);
-		UserBean bean = dao.findByName("xiaowang");
-			System.out.println(bean);
+		//UserBean bean = dao.findByName("xiaowang");
+			//System.out.println(bean);
 	}
 	
 	
