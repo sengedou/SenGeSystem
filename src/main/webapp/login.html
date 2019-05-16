@@ -15,7 +15,7 @@
  			<p>官方出品的后台管理系统</p>
  		</div>
  		<div class="content-body layui-form">
- 		<form action="login.do" method="post">
+ 		<!-- <form action="login.do" method="post"> -->
  			<div class="layui-form-item">
 	 			<label class="layui-icon layui-icon-username"></label>
 			    <div class="input-block">
@@ -63,7 +63,7 @@
 					<a href="register.html">账号注册</a>
 				</div>
  			</div>
- 			</form>
+ 			<!-- </form> -->
  		</div>
  	</div>
  	<div class="bottom-content">
@@ -81,10 +81,22 @@
  </div>
 <script src="layui/layui.js"></script>
 <script>
-layui.use('form', function(){
+layui.use(['form','jquery'], function(){
 	  var form = layui.form;
+	  var $ = layui.jquery;
 	  form.on('submit(login)', function(data){
-	  	
+	  	alert(77);
+	  	$.ajax({
+	  		type:"POST",
+	  		url:"login.do",
+	  		data:{},
+	  		dataType:"json",
+	  		success:function(s){
+	  			alert(s);
+	  			alert(88);
+	  			
+	  		}
+	  	})
 	  })
 	});  
 	
