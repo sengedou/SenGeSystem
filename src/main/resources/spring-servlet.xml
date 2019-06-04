@@ -23,7 +23,15 @@
     <!--注册映射器  -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
 	<!--注册适配器  -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		 <!--配置json转换器  -->
+		 <property name="messageConverters"> 
+		 	<list> 
+		 		<!--Spring版本3和4的class路径是不一样的  -->
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean> 
+		 	</list>
+		 </property>
+	</bean>
 	<!--视图解析器  -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
 

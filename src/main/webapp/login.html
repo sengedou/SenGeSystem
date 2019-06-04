@@ -38,7 +38,7 @@
  					</div>
 	 				<div class="layui-col-xs5">
 	 					<div class="layui-form-item-vercode">
-	 						<img alt="" src="VlidateCode.do">
+	 						<img name="vercodeimg" alt="" src="VlidateCode.do">
 	 					</div>
 	 				</div>
  				</div>
@@ -81,20 +81,31 @@
  </div>
 <script src="layui/layui.js"></script>
 <script>
-layui.use(['form','jquery'], function(){
+layui.use(['form','jquery','layer'], function(){
 	  var form = layui.form;
 	  var $ = layui.jquery;
+	  var layer = layui.layer;
+	  //刷新验证码,设置图片src,最后的随机参数保证每次点击都发送一次请求
+	  $('img[name=vercodeimg]').click(function(){
+		this.src="VlidateCode.do?a="+Math.random();
+	  })
+	  //ajax登录
 	  form.on('submit(login)', function(data){
-	  	alert(77);
+	  	var username = $('input[name=username]').val();
+	  	var password = $('input[name=password]').val();
+	  	var vercode = $('input[name=vercode]').val();
 	  	$.ajax({
 	  		type:"POST",
-	  		url:"login.do",
-	  		data:{},
+	  		url:"loginjson.do",
+	  		data:{"username":username,
+	  			  "password":password,
+	  			  "vercode":vercode},
 	  		dataType:"json",
-	  		success:function(s){
-	  			alert(s);
-	  			alert(88);
-	  			
+	  		success:function(result){
+	  		  layer.msg(result.message);
+	  		  if (result.isLoginOk==true) {
+	  			window.location.href = "index.html";
+	  		  }
 	  		}
 	  	})
 	  })
