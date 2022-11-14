@@ -9,7 +9,7 @@
   	<!--设置编码集-->
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	<!--spring版本-->
-  	<spring.version>4.2.2.RELEASE</spring.version>
+  	<spring.version>4.2.7.RELEASE</spring.version>
   </properties>
   
   <!--添加项目运行所需要的依赖地址  SSM-->
